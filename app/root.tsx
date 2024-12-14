@@ -30,6 +30,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <script
+          src="https://kit.fontawesome.com/f966c5c9b1.js"
+          crossOrigin="anonymous"  // Corrected camelCase usage
+        ></script>
       </head>
       <body>
         {children}
