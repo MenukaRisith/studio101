@@ -5,7 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 
@@ -22,6 +22,20 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export const meta: MetaFunction = () => [
+  { title: "Studio 101 - Elevating Creativity | No. 1 Production House in Sri Lanka" },
+  { name: "description", content: "Studio 101 is the leading production house in Sri Lanka, offering innovative services like Video Production, AR/VR, Game Development, and more." },
+  { name: "keywords", content: "Studio 101, Video Production, AR/VR, Game Development, Sri Lanka, Gajaman, Sri Lankan First 3D Animation Movie, Sri Lankan Highest gross movie" },
+  { property: "og:title", content: "Studio 101 - Elevating Creativity | No. 1 Production House in Sri Lanka" },
+  { property: "og:description", content: "Innovate, create, and thrive with Studio 101. Explore our wide range of services and projects that redefine creativity." },
+  { property: "og:image", content: "/meta-image.png" },
+  { property: "og:url", content: "https://studio101.com" },
+  { name: "twitter:card", content: "summary_large_image" },
+  { name: "twitter:title", content: "Studio 101 - Elevating Creativity" },
+  { name: "twitter:description", content: "Discover Studio 101's award-winning projects and services that push the boundaries of creativity." },
+  { name: "twitter:image", content: "/meta-image.png" },
+];
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -32,7 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
         <script
           src="https://kit.fontawesome.com/f966c5c9b1.js"
-          crossOrigin="anonymous"  // Corrected camelCase usage
+          crossOrigin="anonymous"
         ></script>
       </head>
       <body>
@@ -45,5 +59,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
 }

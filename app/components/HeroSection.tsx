@@ -1,103 +1,131 @@
-import { useEffect } from "react";
-import gsap from "gsap";
+import { useState, useEffect } from "react";
 
-export default function HeroSection() {
+const HeroSection = () => {
+  const [theme, setTheme] = useState("light");
+
   useEffect(() => {
-    gsap.fromTo(
-      ".hero-text",
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1, stagger: 0.2, delay: 0.3 }
-    );
-    gsap.fromTo(
-      ".hero-buttons",
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, delay: 0.8 }
-    );
-  }, []);
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
 
   return (
-    <div className="relative w-full h-screen bg-black text-white rounded-b-[100px] overflow-hidden z-10">
-      {/* Background Video */}
-      <img
-        src="/bg.png"
-        className="absolute inset-0 w-full h-full object-cover rounded-b-[100px]"
-        alt="bg"
-      ></img>
-
-      {/* Black Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50 rounded-b-[100px]"></div>
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6">
-        {/* Logo */}
-        <div className="absolute top-4 left-4 sm:left-20">
-          <img src="/logo.PNG" alt="Studio 101 Logo" className="h-10 sm:h-14" />
-        </div>
-
-        {/* Navigation */}
-        <nav className="absolute top-10 left-1/2 transform -translate-x-1/2 flex flex-wrap justify-center gap-4 sm:gap-8 text-xs sm:text-lg font-medium">
-          <a href="#projects" className="hover:text-purple-500 transition">
+    <section className="relative z-20 bg-white dark:bg-gray-900 text-center py-16 px-4 rounded-bl-[80px] rounded-br-[80px] pb-40">
+      {/* Navigation */}
+      <div className="flex flex-wrap items-center justify-between w-full max-w-6xl mx-auto mb-8 sm:mb-16 px-4 sm:px-0">
+        <img src="/logo-dark.png" alt="Studio 101 Logo" className="h-12 sm:h-20" />
+        <div className="hidden sm:flex gap-4 sm:gap-10 text-neutral-800 dark:text-gray-200 text-xl sm:text-2xl font-medium">
+          <a
+            href="#projects"
+            className="hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-300"
+          >
             Projects
           </a>
-          <a href="#testimonial" className="hover:text-purple-500 transition">
+          <a
+            href="#testimonial"
+            className="hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-300"
+          >
             Testimonial
           </a>
-          <a href="#services" className="hover:text-purple-500 transition">
+          <a
+            href="#services"
+            className="hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-300"
+          >
             Services
           </a>
-          <a href="#faq" className="hover:text-purple-500 transition">
+          <a
+            href="#faq"
+            className="hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-300"
+          >
             FAQ
           </a>
-        </nav>
-
-        {/* Call-to-Action Button */}
-        <div className="absolute top-8 right-4 sm:right-20">
-          <a
-            href="#book-call"
-            className="bg-purple-500 text-black px-4 py-2 sm:px-6 sm:py-3 rounded-full hover:bg-purple-500 transition flex items-center text-xs sm:text-sm font-semibold"
-          >
-            Book a call
-            <i className="fas fa-phone-alt ml-2"></i>
-          </a>
         </div>
-
-        {/* Top Notification Text */}
-        <a
-          href="#notification"
-          className="text-xs sm:text-sm mb-4 hero-text flex items-center justify-center px-4 py-2 bg-white bg-opacity-10 rounded-full border border-white hover:bg-opacity-20 transition cursor-pointer"
+        <button
+          onClick={toggleTheme}
+          className="relative w-12 h-6 sm:w-16 sm:h-8 bg-indigo-500 dark:bg-gray-700 rounded-full flex items-center p-1"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit!{" "}
-          <span className="ml-2">😍</span>
-        </a>
+          <div
+            className={`w-4 h-4 sm:w-6 sm:h-6 bg-white rounded-full shadow transform transition-transform ${
+              theme === "dark" ? "translate-x-6 sm:translate-x-8" : "translate-x-0"
+            }`}
+          ></div>
+        </button>
+      </div>
 
-        {/* Hero Heading */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold font-custom leading-tight mb-4 hero-text">
-          Transforming{" "}
-          <span className="text-purple-500 font-custom italic">Digital</span>{" "}
-          <br />
-          <span className="text-purple-500 font-custom italic">
-            Experiences
-          </span>{" "}
-          with <br />
-          Creative & innovation
+      {/* Heading */}
+      <div className="max-w-4xl mx-auto mb-10 px-4 sm:px-0">
+        <h1 className="text-5xl sm:text-8xl font-semibold text-neutral-800 dark:text-gray-100 font-['Poppins'] leading-tight">
+          Create. Innovate. <br /> Elevate. Thrive.
         </h1>
-
-        {/* Subheading */}
-        <p className="text-sm sm:text-base text-sans md:text-lg mb-6 hero-text text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore.
+        <p className="text-lg sm:text-3xl font-medium text-neutral-600 dark:text-gray-300 mt-4 flex items-center justify-center">
+          We are the No. 1 Production House in{" "}
+          <img
+            src="/sri-lankan-flag.png"
+            alt="Sri Lankan Flag"
+            className="h-6 sm:h-8 ml-2"
+          />
         </p>
+      </div>
 
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 hero-buttons">
-          <button className="bg-white text-black px-6 py-2 sm:px-8 sm:py-3 rounded-full shadow-md hover:bg-gray-200 transition flex items-center text-xs sm:text-sm font-semibold">
-            Let’s get started <span className="ml-2">🚀</span>
-          </button>
-          <button className="border border-white px-6 py-2 sm:px-8 sm:py-3 rounded-full hover:bg-gray-100 hover:text-black hover:bg-white transition flex items-center text-xs sm:text-sm font-semibold">
-            Say Hi! <span className="ml-2">👋</span>
-          </button>
+      {/* Call-to-action */}
+      <div className="flex justify-center mb-8 sm:mb-12 px-4 sm:px-0">
+        <button className="group bg-indigo-500 text-white text-lg sm:text-2xl font-semibold rounded-full px-6 sm:px-8 py-3 sm:py-4 flex items-center gap-4 hover:bg-indigo-400 transition-all duration-700">
+          <div className="relative w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center group-hover:order-last group-hover:translate-x-4 transition-transform duration-700">
+            <img src="/icons/arrow.png" alt="Arrow Icon" className="w-4 sm:w-6 h-4 sm:h-6" />
+          </div>
+          <span className="relative group-hover:order-first group-hover:-translate-x-4 transition-transform duration-700">
+            Book a Call
+          </span>
+        </button>
+      </div>
+
+      {/* Trusted By */}
+      <div className="text-lg sm:text-2xl font-medium text-neutral-800 dark:text-gray-100 mb-6 sm:mb-8 flex items-center justify-center">
+        Trusted by Top Brands in{" "}
+        <img src="/earth.png" alt="World Emoji" className="h-6 sm:h-8 ml-2" />
+      </div>
+
+      {/* Brands Slider */}
+      <div className="relative overflow-hidden mt-8 sm:mt-10 px-4 sm:px-20">
+        <div className="flex items-center gap-12 sm:gap-24 animate-scroll">
+          <img src="/clients/meta.png" alt="Meta" className="h-12 sm:h-16" />
+          <img src="/clients/cocacola.png" alt="Coca Cola" className="h-12 sm:h-16" />
+          <img src="/clients/nestle.png" alt="Nestle" className="h-12 sm:h-16" />
+          <img src="/clients/microsoft.png" alt="Microsoft" className="h-12 sm:h-16" />
+          <img src="/clients/mas.png" alt="MAS" className="h-12 sm:h-16" />
+          <img src="/clients/reckitt.png" alt="Reckitt" className="h-12 sm:h-16" />
+          <img src="/clients/creamsoda.png" alt="Cream Soda" className="h-12 sm:h-16" />
+          <img src="/clients/munchee.png" alt="Munchee" className="h-12 sm:h-16" />
+          <img src="/clients/moose.png" alt="Moose" className="h-12 sm:h-16" />
+          <img src="/clients/pizzahut.png" alt="Pizza Hut" className="h-12 sm:h-16" />
         </div>
       </div>
-    </div>
+
+      {/* Styling for Brands Animation */}
+      <style>
+        {`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0%); /* Start slightly inside the container */
+            }
+            100% {
+              transform: translateX(-200%); /* End with a gap to the left */
+            }
+          }
+          .animate-scroll {
+            animation: scroll 20s linear infinite;
+            display: inline-flex;
+          }
+        `}
+      </style>
+    </section>
   );
-}
+};
+
+export default HeroSection;

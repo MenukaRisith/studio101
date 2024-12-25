@@ -2,31 +2,32 @@ import type { Config } from "tailwindcss";
 
 export default {
   content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class", // Enable dark mode using the 'class' strategy
   theme: {
     extend: {
       fontSize: {
-        '10xl': '10rem', // 160px
-        '11xl': '12rem', // 192px
-        // Add more custom sizes as needed
+        "10xl": "10rem", // 160px
+        "11xl": "12rem", // 192px
+        // Additional custom font sizes can be added here
       },
       colors: {
         orange: {
-          500: '#FFA500', // Adjust as per design
-          600: '#FF8C00',
+          500: "#FFA500", // Adjust as per design
+          600: "#FF8C00",
         },
-        pruple: {
-          500: '#9837E2',
+        purple: {
+          500: "#9837E2", // Corrected spelling of 'purple'
         },
         gray: {
-          500: '#8E8E8E',
-          900: '#101010',
-          100: '#101010',
+          100: "#F5F5F5", // Added light gray
+          500: "#8E8E8E",
+          900: "#101010",
         },
       },
       fontFamily: {
-        sans: ['"DM Sans"', 'sans-serif'],
+        sans: ['"DM Sans"', "sans-serif"],
         heading: ["Montserrat", "sans-serif"],
-        custom: ["DM Serif Text", 'sans-serif'],
+        custom: ["DM Serif Text", "sans-serif"],
       },
     },
   },

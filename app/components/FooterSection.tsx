@@ -1,82 +1,137 @@
-export default function FooterSection() {
-    return (
-      <footer
-        className="relative bg-gray-900 text-white py-16 px-6 sm:px-12"
-        style={{
-          marginTop: "-10px", // Adjust this value to fine-tune the overlap
-          zIndex: 10, // Ensures it stays on top
-        }}
-      >
-        {/* Top Content */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4">Seasoned. Nimble. Remote.</h2>
-          <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
-            We&apos;re a diverse and passionate team that takes ownership of your design and empowers you to execute the roadmap. We stay light on our feet and truly enjoy delivering great work.
-          </p>
+const FooterSection = () => {
+  return (
+    <footer className="relative bg-indigo-600 text-white py-16 overflow-hidden">
+      {/* Glow Effect */}
+      <div className="absolute z-0 top-[-200px] left-1/2 transform -translate-x-1/2 w-[1400px] h-[300px] bg-indigo-500 rounded-full blur-3xl"></div>
+
+      {/* Footer Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Logo and Description */}
+          <div>
+            <img
+              src="/logo.PNG" // Replace with your actual logo URL
+              alt="Studio 101 Logo"
+              className="mb-6 h-14"
+            />
+            <p className="text-lg leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+
+          {/* Address Section */}
+          <div>
+            <h4 className="font-bold text-xl mb-4">Address</h4>
+            <p className="text-lg">30/63L, Longdon Place, Colombo 07, Sri Lanka.</p>
+            <h4 className="font-bold text-xl mt-6">Email</h4>
+            <p className="text-lg">info@wearestudio101.com</p>
+            <h4 className="font-bold text-xl mt-6">Phone</h4>
+            <p className="text-lg">+94 773 686 101</p>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h4 className="font-bold text-xl mb-4">Navigate</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="#projects" className="hover:underline">
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a href="#testimonial" className="hover:underline">
+                  Testimonials
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="hover:underline">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="hover:underline">
+                  FAQs
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Info */}
+          <div>
+            <h4 className="font-bold text-xl mb-4">Info</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="#privacy-policy" className="hover:underline">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#terms" className="hover:underline">
+                  Terms
+                </a>
+              </li>
+              <li>
+                <a href="#copyright-policy" className="hover:underline">
+                  Copyright Policy
+                </a>
+              </li>
+              <li>
+                <a href="#gajaman-3d" className="hover:underline">
+                  Gajaman 3D
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-  
-        {/* Buttons */}
-        <div className="flex justify-center items-center space-x-4 mb-10">
-          <button
-            className="px-6 py-2 rounded-full bg-gray-800 text-white border border-gray-700 hover:bg-white hover:text-black transition"
-            style={{
-              borderWidth: "0.35px",
-            }}
-          >
-            ✨ Insights
-          </button>
-          <button
-            className="px-6 py-2 rounded-full bg-gray-800 text-white border border-gray-700 hover:bg-white hover:text-black transition"
-            style={{
-              borderWidth: "0.35px",
-            }}
-          >
-            🌟 Contact
-          </button>
-        </div>
-  
+
         {/* Divider */}
-        <div className="border-t border-gray-700 mb-10"></div>
-  
-        {/* Bottom Content */}
-        <div className="flex flex-col sm:flex-row justify-between items-center space-y-6 sm:space-y-0">
-          {/* Logo */}
-          <img src="/logo.PNG" alt="Studio 101 Logo" className="h-10" />
-  
-          {/* Copyright */}
-          <p className="text-gray-500 text-xs sm:text-sm text-center">
-            &copy; 2025 Studio101. All Rights Reserved.
+        <div className="mt-8 border-t border-white opacity-20"></div>
+
+        {/* Footer Bottom */}
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-8">
+          <p className="text-lg font-semibold text-center sm:text-left">
+            © 2024 Studio 101
           </p>
-  
-          {/* Social Media Icons */}
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 mt-4 sm:mt-0">
+            {/* Social Media Icons */}
             <a
-              href="https://www.facebook.com"
+              href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-700 hover:bg-white hover:text-black transition"
+              className="w-10 h-10 flex justify-center items-center rounded-full border border-white opacity-70 hover:opacity-100 transition"
             >
-              <i className="fab fa-facebook-f"></i>
+              <i className="fab fa-facebook-f text-white"></i>
             </a>
             <a
-              href="https://www.linkedin.com"
+              href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-700 hover:bg-white hover:text-black transition"
+              className="w-10 h-10 flex justify-center items-center rounded-full border border-white opacity-70 hover:opacity-100 transition"
             >
-              <i className="fab fa-linkedin-in"></i>
+              <i className="fab fa-linkedin-in text-white"></i>
             </a>
             <a
-              href="https://www.twitter.com"
+              href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-700 hover:bg-white hover:text-black transition"
+              className="w-10 h-10 flex justify-center items-center rounded-full border border-white opacity-70 hover:opacity-100 transition"
             >
-              <i className="fab fa-twitter"></i>
+              <i className="fab fa-twitter text-white"></i>
+            </a>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex justify-center items-center rounded-full border border-white opacity-70 hover:opacity-100 transition"
+            >
+              <i className="fab fa-youtube text-white"></i>
             </a>
           </div>
         </div>
-      </footer>
-    );
-  }
-  
+      </div>
+    </footer>
+  );
+};
+
+export default FooterSection;

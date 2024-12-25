@@ -18,7 +18,8 @@
     "isbot": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "studio_101": "file:"
+    "studio_101": "file:",
+    "twemoji": "^14.0.2"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.15.0",

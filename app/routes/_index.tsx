@@ -1,8 +1,8 @@
-// app/routes/index.tsx
 import HeroSection from "~/components/HeroSection";
+import AboutSection from "~/components/AboutSection";
 import ClientsSection from "~/components/ClientSection";
-import TestimonialsSection from "~/components/TestimonialsSection";
 import ServicesSection from "~/components/ServicesSection";
+import ProjectsSection from "~/components/ProjectsSection";
 import FAQSection from "~/components/FAQSection";
 import FooterSection from "~/components/FooterSection";
 
@@ -11,13 +11,15 @@ export default function Index() {
     <div className="font-sans">
       <main>
         <HeroSection />
+        <AboutSection />
         <ClientsSection />
         <ServicesSection />
-        <TestimonialsSection />
+        <ProjectsSection />
         <FAQSection />
-        {/* Additional sections will follow */}
       </main>
-      <FooterSection />
+      <footer>
+        <FooterSection />
+      </footer>
     </div>
   );
 }
