@@ -1,27 +1,25 @@
-const ClientsSection = () => {
+import React from "react";
+
+const ClientSection: React.FC = () => {
+  const generateCards = (count: number, startKey: number) => {
+    return Array(count)
+      .fill(0)
+      .map((_, index) => (
+        <div
+          key={startKey + index}
+          className="w-96 h-72 bg-zinc-300 rounded-3xl border border-zinc-400 flex-shrink-0"
+        ></div>
+      ));
+  };
+
   return (
     <section className="relative bg-white dark:bg-gray-900 py-16 px-4 overflow-hidden">
-      {/* Scrolling Wrapper */}
       <div className="relative flex items-center overflow-hidden">
         <div className="flex gap-8 animate-loop">
           {/* Original Set of Cards */}
-          {Array(8)
-            .fill(0)
-            .map((_, index) => (
-              <div
-                key={index}
-                className="w-96 h-[500px] bg-zinc-300 rounded-3xl border border-zinc-400 flex-shrink-0"
-              ></div>
-            ))}
+          {generateCards(8, 0)}
           {/* Duplicate Set of Cards */}
-          {Array(8)
-            .fill(0)
-            .map((_, index) => (
-              <div
-                key={index + 8}
-                className="w-96 h-[500px] bg-zinc-300 rounded-3xl border border-zinc-400 flex-shrink-0"
-              ></div>
-            ))}
+          {generateCards(8, 8)}
         </div>
       </div>
 
@@ -39,7 +37,7 @@ const ClientsSection = () => {
 
           .animate-loop {
             display: flex;
-            animation: loop 20s linear infinite;
+            animation: loop 30s linear infinite;
             width: calc(192px * 16); /* Width of all cards including duplicates */
           }
         `}
@@ -48,4 +46,4 @@ const ClientsSection = () => {
   );
 };
 
-export default ClientsSection;
+export default ClientSection;

@@ -1,3 +1,4 @@
+import Navbar from "~/components/Navbar"
 import HeroSection from "~/components/HeroSection";
 import AboutSection from "~/components/AboutSection";
 import ClientsSection from "~/components/ClientSection";
@@ -8,8 +9,9 @@ import FooterSection from "~/components/FooterSection";
 
 export default function Index() {
   return (
-    <div className="font-sans">
+    <div className="font-sans dark:bg-gray-900">
       <main>
+        <Navbar />
         <HeroSection />
         <AboutSection />
         <ClientsSection />

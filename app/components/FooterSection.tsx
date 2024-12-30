@@ -1,4 +1,32 @@
 const FooterSection = () => {
+  const footerLinks = [
+    {
+      title: "Navigate",
+      links: [
+        { label: "Projects", href: "#projects" },
+        { label: "Testimonials", href: "#testimonial" },
+        { label: "Services", href: "#services" },
+        { label: "FAQs", href: "#faq" },
+      ],
+    },
+    {
+      title: "Info",
+      links: [
+        { label: "Privacy Policy", href: "/privacy-policy" },
+        { label: "Terms", href: "/terms" },
+        { label: "Copyright Policy", href: "/copyright-policy" },
+        { label: "Gajaman 3D", href: "https://gajaman3d.com" },
+      ],
+    },
+  ];
+
+  const socialMedia = [
+    { href: "https://facebook.com", icon: "fab fa-facebook-f" },
+    { href: "https://linkedin.com", icon: "fab fa-linkedin-in" },
+    { href: "https://twitter.com", icon: "fab fa-twitter" },
+    { href: "https://youtube.com", icon: "fab fa-youtube" },
+  ];
+
   return (
     <footer className="relative bg-indigo-600 text-white py-16 overflow-hidden">
       {/* Glow Effect */}
@@ -6,127 +34,89 @@ const FooterSection = () => {
 
       {/* Footer Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Logo and Description */}
+        {/* Top Section: Logo, Description, Address */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           <div>
             <img
-              src="/logo.PNG" // Replace with your actual logo URL
+              src="/logo.PNG" // Replace with your actual logo
               alt="Studio 101 Logo"
               className="mb-6 h-14"
             />
-            <p className="text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed mb-8">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
+            <div className="mb-6">
+              <h4 className="font-bold text-xl mb-2">Address</h4>
+              <p className="text-lg">
+                30/63L, Longdon Place, <br />
+                Colombo 07, Sri Lanka.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Inline Section: Email, Phone, and Links */}
+        <div className="flex flex-col lg:flex-row justify-between items-center mb-4">
+          <div className="flex items-center space-x-8">
+            <div>
+              <h4 className="font-bold text-xl">Email</h4>
+              <a
+                href="mailto:info@wearestudio101.com"
+                className="text-lg"
+              >
+                info@wearestudio101.com
+              </a>
+            </div>
+            <div>
+              <h4 className="font-bold text-xl">Phone</h4>
+              <a
+                href="tel:+94773686101"
+                className="text-lg"
+              >
+                +94 773 686 101
+              </a>
+            </div>
           </div>
 
-          {/* Address Section */}
-          <div>
-            <h4 className="font-bold text-xl mb-4">Address</h4>
-            <p className="text-lg">30/63L, Longdon Place, Colombo 07, Sri Lanka.</p>
-            <h4 className="font-bold text-xl mt-6">Email</h4>
-            <p className="text-lg">info@wearestudio101.com</p>
-            <h4 className="font-bold text-xl mt-6">Phone</h4>
-            <p className="text-lg">+94 773 686 101</p>
-          </div>
-
-          {/* Navigation */}
-          <div>
-            <h4 className="font-bold text-xl mb-4">Navigate</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#projects" className="hover:underline">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#testimonial" className="hover:underline">
-                  Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:underline">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:underline">
-                  FAQs
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Info */}
-          <div>
-            <h4 className="font-bold text-xl mb-4">Info</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#privacy-policy" className="hover:underline">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#terms" className="hover:underline">
-                  Terms
-                </a>
-              </li>
-              <li>
-                <a href="#copyright-policy" className="hover:underline">
-                  Copyright Policy
-                </a>
-              </li>
-              <li>
-                <a href="#gajaman-3d" className="hover:underline">
-                  Gajaman 3D
-                </a>
-              </li>
-            </ul>
+          <div className="flex space-x-16 mt-2 lg:mt-0">
+            {footerLinks.map((section, index) => (
+              <div key={index}>
+                <h4 className="font-bold text-xl mb-2">{section.title}</h4>
+                <ul className="space-y-1">
+                  {section.links.map((link, idx) => (
+                    <li key={idx}>
+                      <a href={link.href} className="hover:underline">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Divider */}
-        <div className="mt-8 border-t border-white opacity-20"></div>
+        <div className="border-t border-white opacity-20"></div>
 
         {/* Footer Bottom */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mt-8">
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-6">
           <p className="text-lg font-semibold text-center sm:text-left">
             © 2024 Studio 101
           </p>
           <div className="flex space-x-4 mt-4 sm:mt-0">
-            {/* Social Media Icons */}
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 flex justify-center items-center rounded-full border border-white opacity-70 hover:opacity-100 transition"
-            >
-              <i className="fab fa-facebook-f text-white"></i>
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 flex justify-center items-center rounded-full border border-white opacity-70 hover:opacity-100 transition"
-            >
-              <i className="fab fa-linkedin-in text-white"></i>
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 flex justify-center items-center rounded-full border border-white opacity-70 hover:opacity-100 transition"
-            >
-              <i className="fab fa-twitter text-white"></i>
-            </a>
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 flex justify-center items-center rounded-full border border-white opacity-70 hover:opacity-100 transition"
-            >
-              <i className="fab fa-youtube text-white"></i>
-            </a>
+            {socialMedia.map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex justify-center items-center rounded-full border border-white opacity-70 hover:opacity-100 transition"
+              >
+                <i className={social.icon + " text-white"}></i>
+              </a>
+            ))}
           </div>
         </div>
       </div>
