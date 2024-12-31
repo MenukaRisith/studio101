@@ -13,11 +13,13 @@ export default function Index() {
       <main>
         <Navbar />
         <HeroSection />
+        <div>
         <AboutSection />
         <ClientsSection />
         <ServicesSection />
         <ProjectsSection />
         <FAQSection />
+        </div>
       </main>
       <footer>
         <FooterSection />

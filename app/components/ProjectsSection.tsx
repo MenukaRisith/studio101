@@ -23,7 +23,7 @@ const ProjectsSection = () => {
           Here’s what We <br /> Can do for You.
         </h2>
         <p className="mt-4 text-lg sm:text-xl font-semibold text-zinc-400 font-['Poppins'] leading-loose max-w-md mx-auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Lorem ipsum dolor sit amet, consectetur.
         </p>
       </div>
 
