@@ -57,7 +57,7 @@ const FAQSection: React.FC = () => {
       </div>
 
       {/* FAQ Items */}
-      <div className="max-w-4xl mx-auto bg-gray-50 dark:bg-gray-800 rounded-3xl p-6 border border-gray-200 dark:border-gray-700">
+      <div className="max-w-4xl mx-auto bg-gray-50 dark:bg-stone-900 rounded-3xl p-6 border border-gray-200 dark:border-gray-700">
         {faqs.map((faq, index) => {
           const isActive = activeFAQ === index;
           return (
@@ -81,7 +81,7 @@ const FAQSection: React.FC = () => {
                   {faq.question}
                 </h3>
                 <span
-                  className={`ml-4 transform ${
+                  className={`ml-4 transform text-2xl sm:text-3xl font-bold ${
                     isActive ? "rotate-45" : "rotate-0"
                   } transition-transform`}
                 >

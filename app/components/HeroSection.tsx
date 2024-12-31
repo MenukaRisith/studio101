@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 const HeroSection = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // List of client SVG images
   const clientLogos = [
     "coca-cola.svg",
     "dialog.svg",
@@ -12,11 +11,9 @@ const HeroSection = () => {
     "microsoft.svg",
     "nestle.svg",
     "pizza-hut.svg",
-    "reckitt.svg",
     "unilever.svg",
   ];
 
-  // Observe changes in dark mode
   useEffect(() => {
     const observer = new MutationObserver(() => {
       setIsDarkMode(document.documentElement.classList.contains("dark"));
@@ -33,10 +30,10 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative z-20 bg-white dark:bg-gray-900 text-center py-16 sm:py-24 md:py-32 px-4 rounded-bl-[60px] sm:rounded-bl-[100px] md:rounded-bl-[120px] rounded-br-[60px] sm:rounded-br-[100px] md:rounded-br-[120px] pb-12 sm:pb-20 md:pb-28 mt-12 sm:mt-16 overflow-x-hidden">
+    <section className="relative z-20 bg-white dark:bg-gray-900 text-center py- sm:py-24 md:py-32 px-4 pb-24 sm:pb-28 md:pb-40 mt-10 sm:mt-10 overflow-x-hidden">
       {/* Heading */}
       <div className="max-w-4xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0">
-        <h1 className="text-4xl sm:text-6xl md:text-8xl font-semibold text-neutral-800 dark:text-gray-100 font-['Poppins'] leading-tight">
+        <h1 className="text-4xl sm:text-8xl md:text-8xl font-bold text-neutral-800 dark:text-gray-100 mt-10 font-['Poppins'] leading-tight">
           Create. Innovate. <br /> Elevate. Thrive.
         </h1>
         <p className="text-base sm:text-lg md:text-2xl font-medium text-neutral-600 dark:text-gray-300 mt-4 sm:mt-6 flex items-center justify-center">
@@ -71,30 +68,32 @@ const HeroSection = () => {
       </div>
 
       {/* Continuous Carousel for Brands */}
-      <div className="relative overflow-hidden mt-6 sm:mt-8">
-        <div className="carousel-container">
-          <div className="carousel-track">
-            {clientLogos.map((logo, index) => (
-              <img
-                key={index}
-                src={`/clients/${logo}`}
-                alt={`Logo ${index + 1}`}
-                className={`carousel-item h-12 sm:h-16 md:h-20 ${
-                  isDarkMode ? "filter invert brightness-0" : ""
-                }`}
-              />
-            ))}
-            {clientLogos.map((logo, index) => (
-              <img
-                key={`duplicate-${index}`}
-                src={`/clients/${logo}`}
-                alt={`Duplicate Logo ${index + 1}`}
-                className={`carousel-item h-12 sm:h-16 md:h-20 ${
-                  isDarkMode ? "filter invert brightness-0" : ""
-                }`}
-              />
-            ))}
-          </div>
+      <div
+        className={`carousel-container ${
+          isDarkMode ? "dark-mode" : "light-mode"
+        } relative overflow-hidden mt-6 sm:mt-8`}
+      >
+        <div className="carousel-track">
+          {clientLogos.map((logo, index) => (
+            <img
+              key={index}
+              src={`/clients/${logo}`}
+              alt={`Logo ${index + 1}`}
+              className={`carousel-item h-12 sm:h-16 md:h-20 ${
+                isDarkMode ? "filter invert brightness-0" : ""
+              }`}
+            />
+          ))}
+          {clientLogos.map((logo, index) => (
+            <img
+              key={`duplicate-${index}`}
+              src={`/clients/${logo}`}
+              alt={`Duplicate Logo ${index + 1}`}
+              className={`carousel-item h-12 sm:h-16 md:h-20 ${
+                isDarkMode ? "filter invert brightness-0" : ""
+              }`}
+            />
+          ))}
         </div>
       </div>
 
@@ -105,14 +104,14 @@ const HeroSection = () => {
             display: flex;
             overflow: hidden;
             position: relative;
-            width: calc(100% - 400px); /* Start 200px from right, end 200px from left */
+            width: calc(100% - 400px);
             margin: 0 auto;
           }
 
           .carousel-track {
             display: flex;
-            animation: scroll 15s linear infinite;
-            gap: 30px; /* Gap between images */
+            animation: scroll 20s linear infinite;
+            gap: 50px;
           }
 
           .carousel-item {
@@ -126,27 +125,33 @@ const HeroSection = () => {
             position: absolute;
             top: 0;
             bottom: 0;
-            width: 70px; /* Adjust width of blur effect */
+            width: 70px;
             z-index: 2;
             pointer-events: none;
           }
 
-          .carousel-container::before {
+          /* Light Mode */
+          .carousel-container.light-mode::before {
             left: 0;
-            background: linear-gradient(
-              to right,
-              ${isDarkMode ? "rgba(17, 24, 39, 1)" : "rgba(255, 255, 255, 1)"},
-              ${isDarkMode ? "rgba(17, 24, 39, 0)" : "rgba(255, 255, 255, 0)"}
-            );
+            background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
           }
 
-          .carousel-container::after {
+          .carousel-container.light-mode::after {
             right: 0;
-            background: linear-gradient(
-              to left,
-              ${isDarkMode ? "rgba(17, 24, 39, 1)" : "rgba(255, 255, 255, 1)"},
-              ${isDarkMode ? "rgba(17, 24, 39, 0)" : "rgba(255, 255, 255, 0)"}
-            );
+            left: auto;
+            background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+          }
+
+          /* Dark Mode */
+          .carousel-container.dark-mode::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(17, 24, 39, 1), rgba(17, 24, 39, 0));
+          }
+
+          .carousel-container.dark-mode::after {
+            right: 0;
+            left: auto;
+            background: linear-gradient(to left, rgba(17, 24, 39, 1), rgba(17, 24, 39, 0));
           }
 
           @keyframes scroll {
@@ -154,7 +159,7 @@ const HeroSection = () => {
               transform: translateX(0%);
             }
             100% {
-              transform: translateX(-100%);
+              transform: translateX(-50%);
             }
           }
         `}

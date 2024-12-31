@@ -31,14 +31,14 @@ const AboutSection = () => {
       <div className="flex justify-center items-center mx-auto mb-6 mt-12">
         <img
           className="w-32 h-24 sm:w-auto sm:h-32 md:w-auto md:h-40 lg:w-80 lg:h-48 xl:w-auto xl:h-56"
-          src={isDarkMode ? "/gajaman-logo.png" : "/gajaman-dark-logo.png"}
+          src={isDarkMode ? "/gajaman-logo.webp" : "/gajaman-dark-logo.webp"}
           alt="Gajaman Logo"
         />
       </div>
 
       {/* Content */}
       <div className="max-w-4xl mx-auto text-center mt-8 sm:mt-12 md:mt-16 lg:mt-20 px-4">
-        <p className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-4xl font-semibold text-neutral-800 dark:text-gray-100 font-['Poppins'] leading-relaxed">
+        <p className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-neutral-800 dark:text-gray-100 font-['Poppins'] leading-relaxed">
           The Team Behind Gajaman 3D, Sri Lanka&apos;s First 3D Animated Movie
           and the Highest Grossing Film in Sri Lankan Cinema History.
         </p>

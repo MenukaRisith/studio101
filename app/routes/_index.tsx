@@ -13,40 +13,22 @@ export default function Index() {
     const handleSmoothScroll = (e: Event) => {
       const target = (e.target as HTMLElement).closest("a");
       if (target && target.hash) {
-        e.preventDefault();
         const section = document.querySelector(target.hash);
         if (section) {
+          e.preventDefault();
           const offset = 80; // Offset for fixed navbar
           const targetPosition =
             section.getBoundingClientRect().top + window.scrollY - offset;
-          const startPosition = window.scrollY;
-          const distance = targetPosition - startPosition;
-          const duration = 1000; // Animation duration in milliseconds
-          let startTime: number | null = null;
 
-          const easeInOutQuad = (t: number) =>
-            t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-
-          const animation = (currentTime: number) => {
-            if (startTime === null) startTime = currentTime;
-            const timeElapsed = currentTime - startTime;
-            const progress = Math.min(timeElapsed / duration, 1); // Ensure progress doesn't exceed 1
-            const ease = easeInOutQuad(progress);
-            window.scrollTo(0, startPosition + distance * ease);
-
-            if (timeElapsed < duration) {
-              requestAnimationFrame(animation);
-            }
-          };
-
-          requestAnimationFrame(animation);
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
         }
       }
     };
 
-    // Add smooth scroll listener
     document.addEventListener("click", handleSmoothScroll);
-
     return () => {
       document.removeEventListener("click", handleSmoothScroll);
     };
@@ -54,20 +36,31 @@ export default function Index() {
 
   return (
     <div className="font-[poppins] dark:bg-gray-900">
-      <main>
-        <Navbar />
-        <HeroSection />
-        <div>
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Main Content with Blur Overlay */}
+      <div className="relative">
+        {/* Blur Overlay */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-neutral-200/20 dark:bg-neutral-900/40 blur-2xl"></div>
+        </div>
+
+        {/* Main Sections */}
+        <div className="relative z-10">
           <AboutSection />
           <ClientsSection />
           <ServicesSection />
           <ProjectsSection />
           <FAQSection />
         </div>
-      </main>
-      <footer>
-        <FooterSection />
-      </footer>
+      </div>
+
+      {/* Footer */}
+      <FooterSection />
     </div>
   );
 }
