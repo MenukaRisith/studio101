@@ -104,8 +104,14 @@ const HeroSection = () => {
             display: flex;
             overflow: hidden;
             position: relative;
-            width: calc(100% - 400px);
+            width: calc(100% - 400px); /* Default width */
             margin: 0 auto;
+          }
+
+          @media (max-width: 640px) {
+            .carousel-container {
+              width: calc(100% - 50px); /* Wider for mobile view */
+            }
           }
 
           .carousel-track {

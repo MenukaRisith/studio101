@@ -10,27 +10,63 @@ import FooterSection from "~/components/FooterSection";
 
 export default function Index() {
   useEffect(() => {
-    const handleSmoothScroll = (e: Event) => {
-      const target = (e.target as HTMLElement).closest("a");
-      if (target && target.hash) {
-        const section = document.querySelector(target.hash);
-        if (section) {
-          e.preventDefault();
-          const offset = 80; // Offset for fixed navbar
-          const targetPosition =
-            section.getBoundingClientRect().top + window.scrollY - offset;
+    let isScrolling = false; // Prevents overlapping scrolls
+    let lastScrollY = 0; // Tracks the last scroll position
+    let scrollVelocity = 0; // Smoothens the scroll speed
+    let requestId: number | null = null;
 
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
-        }
+    const smoothScroll = () => {
+      if (!isScrolling) {
+        return;
+      }
+
+      // Calculate smooth scroll
+      const targetScroll = lastScrollY + scrollVelocity * 0.2;
+
+      window.scrollTo(0, targetScroll);
+
+      // Decelerate scrolling
+      scrollVelocity *= 0.8;
+
+      // Stop scrolling when velocity is near zero
+      if (Math.abs(scrollVelocity) > 0.5) {
+        requestId = requestAnimationFrame(smoothScroll);
+      } else {
+        isScrolling = false;
+        scrollVelocity = 0;
+        if (requestId) cancelAnimationFrame(requestId);
       }
     };
 
-    document.addEventListener("click", handleSmoothScroll);
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault(); // Prevent default scrolling
+      scrollVelocity += e.deltaY * 0.5; // Accumulate scrolling speed
+      lastScrollY = window.scrollY; // Update the last scroll position
+      if (!isScrolling) {
+        isScrolling = true;
+        smoothScroll();
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault(); // Prevent native touch scrolling
+      const touch = e.touches[0];
+      const deltaY = touch.clientY - lastScrollY;
+      scrollVelocity += deltaY * 0.5;
+      lastScrollY = window.scrollY;
+      if (!isScrolling) {
+        isScrolling = true;
+        smoothScroll();
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+
     return () => {
-      document.removeEventListener("click", handleSmoothScroll);
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchmove", handleTouchMove);
+      if (requestId) cancelAnimationFrame(requestId);
     };
   }, []);
 

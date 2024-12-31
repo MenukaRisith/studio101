@@ -70,7 +70,7 @@ const NavBar = () => {
         {/* Dark Mode Toggle */}
         <button
           onClick={toggleDarkMode}
-          className="Toggle w-16 h-10 px-1.5 bg-indigo-500 rounded-3xl block md:mx-[200px] flex items-center relative overflow-hidden"
+          className="Toggle w-16 h-10 px-1.5 bg-indigo-500 rounded-3xl block mx-[20px] md:mx-[200px] flex items-center relative overflow-hidden"
         >
           {/* Moving Circle */}
           <div
