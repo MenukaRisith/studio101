@@ -81,8 +81,10 @@ const ServicesSection = () => {
     <section id="services" className="py-16 px-4 bg-white dark:bg-gray-900">
       {/* Section Heading */}
       <div className="max-w-3xl mx-auto text-center mb-12">
-        <div className="inline-flex justify-center items-center px-5 py-3 rounded-lg border border-gray-400 bg-neutral-900 text-white text-lg font-bold backdrop-blur-[2px]">
-          Services
+        <div className="Title h-12 px-5 py-3 bg-gray-200 dark:bg-stone-900 rounded-xl border border-neutral-400 backdrop-blur-sm justify-center items-center gap-2.5 inline-flex">
+          <div className="Services text-stone-900 dark:text-white text-xl font-bold font-['Poppins']">
+            Services
+          </div>
         </div>
         <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mt-6">
           Here’s what We <br /> Can do for You.

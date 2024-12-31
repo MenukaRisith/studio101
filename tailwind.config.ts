@@ -22,6 +22,7 @@ export default {
           100: "#F5F5F5", // Added light gray
           500: "#8E8E8E",
           900: "#101010",
+          1000: "#8E8E8E",
         },
       },
       fontFamily: {

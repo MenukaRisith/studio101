@@ -3,7 +3,7 @@ const ProjectsSection = () => {
     Array.from({ length: count }).map((_, index) => (
       <div
         key={`${startKey}-${index}`}
-        className="w-96 h-72 bg-zinc-300 rounded-3xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] border border-zinc-400 flex-shrink-0"
+        className="w-96 h-72 bg-zinc-300 rounded-3xl border border-zinc-400 flex-shrink-0"
       ></div>
     ));
 
@@ -14,8 +14,8 @@ const ProjectsSection = () => {
     >
       {/* Section Heading */}
       <div className="max-w-3xl mx-auto text-center mb-12">
-        <div className="Title h-12 px-5 py-3 bg-stone-900 rounded-xl border border-neutral-400 backdrop-blur-sm justify-center items-center gap-2.5 inline-flex">
-          <div className="Services text-gray-200 text-xl font-bold font-['Poppins']">
+        <div className="Title h-12 px-5 py-3 bg-gray-200 dark:bg-stone-900 rounded-xl border border-neutral-400 backdrop-blur-sm justify-center items-center gap-2.5 inline-flex">
+          <div className="Services text-stone-900 dark:text-white text-xl font-bold font-['Poppins']">
             Projects
           </div>
         </div>

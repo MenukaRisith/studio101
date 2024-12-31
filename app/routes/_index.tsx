@@ -9,7 +9,7 @@ import FooterSection from "~/components/FooterSection";
 
 export default function Index() {
   return (
-    <div className="font-sans dark:bg-gray-900">
+    <div className="font-[poppins] dark:bg-gray-900">
       <main>
         <Navbar />
         <HeroSection />

@@ -43,24 +43,15 @@ const FAQSection: React.FC = () => {
     >
       {/* Section Header */}
       <div className="text-center mb-10">
-        <div
-          className="inline-block px-5 py-3 rounded-xl text-lg font-bold"
-          style={{
-            background: "#1E1E1E",
-            color: "#EBEBEB",
-            borderRadius: "12px",
-            border: "1px solid #8E8E8E",
-            backdropFilter: "blur(3px)",
-            fontFamily: "Poppins",
-            fontWeight: 700,
-          }}
-        >
-          FAQs
+        <div className="Title h-12 px-5 py-3 bg-gray-200 dark:bg-stone-900 rounded-xl border border-neutral-400 backdrop-blur-sm justify-center items-center gap-2.5 inline-flex">
+          <div className="Services text-stone-900 dark:text-white text-xl font-bold font-['Poppins']">
+            FAQs
+          </div>
         </div>
         <h2 className="mt-6 text-3xl sm:text-5xl font-bold text-gray-900 dark:text-white">
           Frequently Asked Questions
         </h2>
-        <p className="mt-4 text-lg sm:text-xl text-gray-600 dark:text-gray-400">
+        <p className="mt-4 text-lg sm:text-xl font-semibold text-gray-500 dark:text-gray-400">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </div>
