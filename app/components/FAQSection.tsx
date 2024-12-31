@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const FAQSection: React.FC = () => {
   const [activeFAQ, setActiveFAQ] = useState<number>(-1); // Default to no FAQ being open
@@ -88,18 +88,21 @@ const FAQSection: React.FC = () => {
                   +
                 </span>
               </div>
-              {isActive && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="overflow-hidden mt-4"
-                >
-                  <p className="text-sm sm:text-lg text-gray-800 dark:text-gray-300">
-                    {faq.answer}
-                  </p>
-                </motion.div>
-              )}
+              <AnimatePresence>
+                {isActive && (
+                  <motion.div
+                    key="content"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="overflow-hidden mt-4"
+                  >
+                    <p className="text-sm sm:text-lg text-gray-800 dark:text-gray-300">
+                      {faq.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           );
         })}
