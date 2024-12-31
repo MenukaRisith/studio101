@@ -30,7 +30,7 @@ const AboutSection = () => {
       {/* Logo */}
       <div className="flex justify-center items-center mx-auto mb-6 mt-12">
         <img
-          className="w-32 h-24 sm:w-auto sm:h-32 md:w-auto md:h-40 lg:w-80 lg:h-48 xl:w-auto xl:h-56"
+          className="w-32 h-24 sm:w-auto sm:h-32 md:w-auto md:h-40 lg:w-auto lg:h-48 xl:w-auto xl:h-56"
           src={isDarkMode ? "/gajaman-logo.webp" : "/gajaman-dark-logo.webp"}
           alt="Gajaman Logo"
         />
