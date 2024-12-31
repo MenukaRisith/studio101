@@ -21,11 +21,12 @@ const FooterSection = () => {
   ];
 
   const socialMedia = [
-    { href: "https://facebook.com", icon: "fab fa-facebook-f" },
-    { href: "https://linkedin.com", icon: "fab fa-linkedin-in" },
-    { href: "https://twitter.com", icon: "fa-brands fa-x-twitter" },
-    { href: "https://youtube.com", icon: "fab fa-youtube" },
-    { href: "https://instagram.com", icon: "fab fa-instagram" },
+    { href: "https://www.facebook.com/studio101lk/", icon: "fab fa-facebook-f" },
+    { href: "https://lk.linkedin.com/company/studio-one-zero-one", icon: "fab fa-linkedin-in" },
+    { href: "https://x.com/studio101lk", icon: "fa-brands fa-x-twitter" },
+    { href: "https://www.youtube.com/@studio101lk", icon: "fab fa-youtube" },
+    { href: "https://www.instagram.com/studio101lk/", icon: "fab fa-instagram" },
+    { href: "https://www.tiktok.com/@studio101lk", icon: "fab fa-tiktok" },
   ];
 
   return (

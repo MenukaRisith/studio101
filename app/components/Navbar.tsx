@@ -48,26 +48,26 @@ const NavBar = () => {
       const distance = targetPosition - startPosition;
       const duration = 1000; // Animation duration in milliseconds
       let startTime: number | null = null;
-  
+
       const easeInOutQuad = (t: number) =>
         t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-  
+
       const animation = (currentTime: number) => {
         if (startTime === null) startTime = currentTime;
         const timeElapsed = currentTime - startTime;
         const progress = Math.min(timeElapsed / duration, 1); // Ensure progress doesn't exceed 1
         const ease = easeInOutQuad(progress);
         window.scrollTo(0, startPosition + distance * ease);
-  
+
         if (timeElapsed < duration) {
           requestAnimationFrame(animation);
         }
       };
-  
+
       requestAnimationFrame(animation);
     }
   };
-  
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 overflow-hidden transition-all duration-300 ${
@@ -78,12 +78,14 @@ const NavBar = () => {
       style={{ overflowX: "hidden" }}
     >
       <div className="flex items-center justify-between w-full max-w-full mx-auto py-5 px-3 sm:px-4">
-        {/* Logo */}
-        <img
-          src="/logo-1.png"
-          alt="Studio 101 Logo"
-          className="h-10 sm:h-12 mx-[200px]" // Adjusted margin-left
-        />
+        {/* Logo Wrapper */}
+        <div className="mx-[200px]">
+          <img
+            src="/logo-1.png"
+            alt="Studio 101 Logo"
+            className="h-10 sm:h-12"
+          />
+        </div>
 
         {/* Desktop Links (Hidden on Mobile) */}
         <div className="hidden md:flex gap-4 mx-auto md:gap-8 text-neutral-800 dark:text-gray-200 text-lg md:text-xl font-medium">
@@ -107,7 +109,7 @@ const NavBar = () => {
         {/* Dark Mode Toggle */}
         <button
           onClick={toggleDarkMode}
-          className="Toggle w-16 h-10 px-1.5 bg-indigo-500 rounded-3xl mx-[200px] flex items-center relative overflow-hidden" // Adjusted margin-right
+          className="Toggle w-16 h-10 px-1.5 bg-indigo-500 rounded-3xl mx-[200px] flex items-center relative overflow-hidden"
         >
           {/* Moving Circle */}
           <div
@@ -118,21 +120,11 @@ const NavBar = () => {
                 : "translateX(0px)", // Start at 0px
             }}
           >
-            <div className="w-5 h-5 relative">
-              {isDarkMode ? (
-                <img
-                  src="/icons/moon.png"
-                  alt="Moon Icon"
-                  className="absolute top-0 left-0 w-full h-full transition-opacity duration-500 transform scale-100 opacity-100"
-                />
-              ) : (
-                <img
-                  src="/icons/sun.png"
-                  alt="Sun Icon"
-                  className="absolute top-0 left-0 w-full h-full transition-opacity duration-500 transform scale-100 opacity-100"
-                />
-              )}
-            </div>
+            <img
+              src={`/${isDarkMode ? "dark_mode.svg" : "light_mode.svg"}`}
+              alt={isDarkMode ? "Dark Mode" : "Light Mode"}
+              className="w-6 h-6 filter invert-0" // Black color
+            />
           </div>
         </button>
       </div>
